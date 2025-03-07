@@ -3,25 +3,19 @@ package com.ohmz.reminder.presentation.homescreen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import com.ohmz.reminder.presentation.components.AddListButton
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ohmz.reminder.presentation.components.NewReminderButton
-import com.ohmz.reminder.presentation.components.ReminderListItem
-import com.ohmz.reminder.presentation.components.SectionHeader
 import com.ohmz.reminder.presentation.home.ReminderLists
-import com.ohmz.reminder.presentation.home.ReminderUiState
 import com.ohmz.reminder.presentation.home.ReminderViewModel
 
 @Composable
 fun HomeScreen(
-    viewModel: ReminderViewModel = viewModel(),
+    viewModel: ReminderViewModel = hiltViewModel(), // Use hiltViewModel() for Hilt
     onNewReminder: () -> Unit,
     onAddList: () -> Unit
 ) {

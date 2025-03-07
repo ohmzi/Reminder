@@ -1,10 +1,16 @@
 package com.ohmz.reminder.di
 
-import com.google.android.datatransport.runtime.dagger.Binds
-import com.google.android.datatransport.runtime.dagger.Module
-import com.google.android.datatransport.runtime.dagger.Provides
+import com.ohmz.reminder.data.local.AppDatabase
 import com.ohmz.reminder.data.repository.ReminderRepository
 import com.ohmz.reminder.data.repository.ReminderRepositoryImpl
+import dagger.Module
+import dagger.Binds
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
 
 // In AppModule.kt
 @Module
@@ -19,5 +25,8 @@ abstract class ViewModelModule {
 @InstallIn(SingletonComponent::class)
 object AppModule {
     @Provides
-    fun provideReminderRepository(): ReminderRepository = ReminderRepositoryImpl()
+    @Singleton
+    fun provideReminderRepository(db: AppDatabase): ReminderRepository {
+        return ReminderRepositoryImpl(db)
+    }
 }

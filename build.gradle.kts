@@ -1,14 +1,7 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Plugin management for version catalogs
 plugins {
     alias(libs.plugins.android.application) apply false
+    id("com.android.library") version "8.2.1" apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
-}
-
-buildscript {
-    ext {
-        hilt_version = ("2.48.1") // Use the latest stable version
-    }
-    dependencies {
-        classpath ("com.google.dagger:hilt-android-gradle-plugin:$hilt_version")
-    }
+    id("com.google.dagger.hilt.android") version "2.48.1" apply false
 }
